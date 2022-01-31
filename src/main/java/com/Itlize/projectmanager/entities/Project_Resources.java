@@ -19,7 +19,6 @@ public class Project_Resources {
     @Id
     @GenericGenerator(name = "UseExistingIdOtherwiseGenerateUsingIdentity", strategy = "com.Itlize.projectmanager.entities.UseExistingIdOtherwiseGenerateUsingIdentity")
     @GeneratedValue(generator = "UseExistingIdOtherwiseGenerateUsingIdentity")
-    @Column( name = "project_resource_id",unique = true, nullable = false)
     private Integer projectResourcesId;
 
     @Column(name = "firstName")

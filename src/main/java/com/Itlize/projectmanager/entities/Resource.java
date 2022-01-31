@@ -7,18 +7,25 @@ import java.util.Set;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @Table(name="resource")
+@EntityListeners(AuditingEntityListener.class)
 public class Resource {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GenericGenerator(name = "UseExistingIdOtherwiseGenerateUsingIdentity", strategy = "com.Itlize.projectmanager.entities.UseExistingIdOtherwiseGenerateUsingIdentity")
+    @GeneratedValue(generator = "UseExistingIdOtherwiseGenerateUsingIdentity")
     private Integer resourceId;
+
+    @Column(name ="resource_name")
+    private String resourceName;
 
 
     @CreatedDate
@@ -26,6 +33,7 @@ public class Resource {
 
     @LastModifiedDate
     private Date lastUpdated;
+
 
     @JsonIgnore
     @OneToMany(targetEntity = Project_Resources.class, cascade = CascadeType.REMOVE, mappedBy = "resource")
@@ -46,6 +54,15 @@ public class Resource {
 //        this.lastUpdated = lastUpdated;
 //        this.resourcesDetails = resourcesDetails;
 //    }
+
+    public String getResourceName() {
+        return resourceName;
+    }
+
+    public void setResourceName(String resourceName) {
+        this.resourceName = resourceName;
+    }
+
 
     public Integer getResourceId() {
         return resourceId;

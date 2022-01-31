@@ -16,6 +16,8 @@ public interface UserService {
     public User createUser(User user);
     public User createUserAndProjects(User user, Set <Project> project);
     public Optional<User> getUserById(Integer user_name);
-    public void updateUser(User user);
-    public void deleteUser(User user, Set<Project> projects);
+    public boolean updateUserbyId( Integer id, User user);
+    public void deleteUserProject(User user, Set<Project> projects);
+    public boolean deleteUser(User user);
+    public boolean deleteUserbyID (Integer id);
 }

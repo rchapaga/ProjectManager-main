@@ -5,11 +5,13 @@ import com.Itlize.projectmanager.entities.Resource;
 import java.util.List;
 
 public interface ResourceService {
-    Resource createResource(Resource resource);
+    public Resource createResource(Resource resource);
 
-    /*Resource findResourceById(Integer id);
+    public Resource findResourceById(Integer id) ;
 
-    List<Resource> findallResources();
+    public boolean updateResourcebyId(Integer id, Resource resource);
 
-     */
+    public boolean deleteUserbyID(Integer id );
+
+    public List<Resource> findallResources();
 }

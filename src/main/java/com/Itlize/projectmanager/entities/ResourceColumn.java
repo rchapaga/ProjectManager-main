@@ -16,7 +16,6 @@ public class ResourceColumn {
     @Id
     @GenericGenerator(name = "UseExistingIdOtherwiseGenerateUsingIdentity", strategy = "com.Itlize.projectmanager.entities.UseExistingIdOtherwiseGenerateUsingIdentity")
     @GeneratedValue(generator = "UseExistingIdOtherwiseGenerateUsingIdentity")
-    @Column( name = "resource_column_id",unique = true, nullable = false)
     private Integer resourceColumnId;
 
     @ManyToOne(targetEntity = ProjectDetails.class, cascade = CascadeType.DETACH)

@@ -71,15 +71,28 @@ public class UserServiceImp implements UserService {
 
         public Optional<User> getUserById(Integer user_name){
 
+
             return userRepository.findById(user_name);
         }
 
-        public void updateUser(User user){
-            userRepository.save(user);
+        public boolean updateUserbyId( Integer id, User user){
+            User tempUser = new User();
+            if (user == null) {
+                System.out.println("null input");
+                return false;
+            }
+            try {
+                tempUser = user;
+                tempUser.setUserId(id);
+                userRepository.save(tempUser);
 
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return true;
         }
 
-        public void deleteUser(User user, Set<Project> project){
+        public void deleteUserProject(User user, Set<Project> project){
             if (user == null || project == null){
                 System.out.println("null input");
             }
@@ -100,8 +113,39 @@ public class UserServiceImp implements UserService {
 
         }
 
+    public boolean deleteUser( User user) {
+        if (user == null) {
+            System.out.println("null input");
+        }
+        try {
+            userRepository.delete(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return true;
+
+    }
+
+
+        public boolean deleteUserbyID(Integer id ){
+            if (id == 0) {
+                System.out.println("Not Valid");
+            }
+            try {
+                User user = userRepository.getById(id);
+                userRepository.delete(user);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return true;
+
+
+        }
+
+    }
 
 
 
 
-}
+
+

@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.data.annotation.CreatedDate;
@@ -19,7 +20,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 public class Project {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GenericGenerator(name = "UseExistingIdOtherwiseGenerateUsingIdentity", strategy = "com.Itlize.projectmanager.entities.UseExistingIdOtherwiseGenerateUsingIdentity")
+    @GeneratedValue(generator = "UseExistingIdOtherwiseGenerateUsingIdentity")
     private Integer projectId;
 
     @Column(name = "project_name")
