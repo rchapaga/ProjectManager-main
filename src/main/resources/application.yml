@@ -1,4 +1,10 @@
 spring:
+  security:
+
+    user:
+      name: "Mango"
+      password: "Yolo"
+
 
 
   datasource:
@@ -12,5 +18,7 @@ spring:
       ddl-auto: update
     show-sql: true
     database-platform: org.hibernate.dialect.MySQL5Dialect
+  main:
+    allow-circular-references: true
 server:
   port: 8081

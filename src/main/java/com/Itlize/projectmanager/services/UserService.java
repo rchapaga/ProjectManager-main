@@ -20,4 +20,6 @@ public interface UserService {
     public void deleteUserProject(User user, Set<Project> projects);
     public boolean deleteUser(User user);
     public boolean deleteUserbyID (Integer id);
+//    public User saveUser(User user);
+    public User findByUsername(String username);
 }

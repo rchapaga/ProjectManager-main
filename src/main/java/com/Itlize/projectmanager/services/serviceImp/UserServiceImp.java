@@ -5,15 +5,18 @@ import com.Itlize.projectmanager.entities.User;
 
 import com.Itlize.projectmanager.repositories.ProjectRepository;
 import com.Itlize.projectmanager.repositories.UserRepository;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.Itlize.projectmanager.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.*;
 
 @Service
+@Transactional
 public class UserServiceImp implements UserService {
 
 
@@ -23,6 +26,22 @@ public class UserServiceImp implements UserService {
 
     @Autowired
     private ProjectRepository projectRepository;
+
+//    @Autowired
+//    private PasswordEncoder passwordEncoder;
+
+
+
+//    public User saveUser(User user) {
+//        user.setPassword(passwordEncoder.encode(user.getPassword()));
+//        return userRepository.save(user);
+//    }
+
+
+    public User findByUsername(String username) {
+
+        return userRepository.findByUserName(username);
+    }
 
 
 

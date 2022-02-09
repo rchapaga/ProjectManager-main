@@ -31,7 +31,8 @@ public class UserServiceImpTest{
         user.setEmail("gggg@gmail.com");
         user.setFirstName("Test");
         user.setLastName("asd");
-        user.setPassword("dd");
+        user.setPassword("yolo");
+        user.setUserName("Mango");
         user.setRole(Role.ADMIN);
 //      user.setTimeCreate(new Date());
 //      user.setLastUpdated(new Date());

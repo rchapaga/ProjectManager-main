@@ -2,6 +2,7 @@ package com.Itlize.projectmanager.entities;
 
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -27,7 +28,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 @Entity
 @Table(name="user")
 @EntityListeners(AuditingEntityListener.class)
-public class User {
+public class User  implements Serializable {
 
     @Id
     @GenericGenerator(name = "UseExistingIdOtherwiseGenerateUsingIdentity", strategy = "com.Itlize.projectmanager.entities.UseExistingIdOtherwiseGenerateUsingIdentity")
@@ -47,6 +48,9 @@ public class User {
 
     @Column(name = "last_name")
     private String lastName;
+
+    @Column(name = "user_name" ,unique = true, nullable = false)
+    private  String userName;
 
     @Column(name = "email")
     private String email;
@@ -82,6 +86,14 @@ public class User {
 //			this.projects = projects;
 //		}
 
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     public String getEmail() {
         return email;
